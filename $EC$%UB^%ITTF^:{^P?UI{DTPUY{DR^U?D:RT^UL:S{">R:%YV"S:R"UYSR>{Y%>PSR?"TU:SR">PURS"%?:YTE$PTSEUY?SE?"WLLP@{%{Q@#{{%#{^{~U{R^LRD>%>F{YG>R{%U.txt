@@ -1,5 +1,5 @@
 local names = game:GetService("Players").LocalPlayer.Name
-if names == "diaosi2077" or names == "charliedegongjuren" or names == "njdisiwbsfhs" then
+if names == "diaosi2077" or names == "charliedegongjuren" or names == "njdisiwbsfhs" or Roblox49023566 then
 
 	print("Hello world!")
 
