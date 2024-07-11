@@ -1,5 +1,5 @@
 local names = game:GetService("Players").LocalPlayer.Name
-if names == "diaosi2077" or names == "charliedegongjuren" or names == "njdisiwbsfhs" or names == "Roblox49023566" then
+if names == "diaosi2077" or names == "charliedegongjuren" or names == "njdisiwbsfhs" or names == "YUBOACO" then
 
 	print("Hello world!")
 
@@ -1835,6 +1835,11 @@ if names == "diaosi2077" or names == "charliedegongjuren" or names == "njdisiwbs
 				game.ReplicatedStorage.Models.Items.Python.Handle.Muzzle.PointLight.Name = "PointLight1"
 			end
 		end
+        if game.ReplicatedStorage.Models.Items:FindFirstChild("Dragunov") then
+			if  game.ReplicatedStorage.Models.Items.Dragunov.Handle.Muzzle:FindFirstChild("PointLight") then
+				game.ReplicatedStorage.Models.Items.Dragunov.Handle.Muzzle.PointLight.Name = "PointLight1"
+			end
+		end
 	end)
 	severcharbutton("远程黑市").MouseButton1Click:Connect(function()
 		game.Workspace.BlackMarket.Dealer.Dealer.ProximityPrompt.MaxActivationDistance = 10000
@@ -2036,55 +2041,105 @@ if names == "diaosi2077" or names == "charliedegongjuren" or names == "njdisiwbs
 	sound.Parent = SoundService
 	sound.Playing = true
 	sound.SoundId = "rbxassetid://9173948824"
+	game.workspace.PlaytimeLeaderboard.Sign.SurfaceGui.TextLabel.Text = "CHARLIE脚本666"
+	game.workspace.CashLeaderboard.Sign.SurfaceGui.TextLabel.Text = "CHARLIE脚本领先世界"
+	local function loop1()
+		while true do
+			wait(0.1)
 
-	while true do
+			local bank = game.workspace.BankRobbery.BankCash.Cash:FindFirstChild("Bundle")--查找
+			if bank then--判断
+				wait(1)--冷却时间
+				game:GetService("StarterGui"):SetCore("SendNotification",{--提示
+					Title = "DevvGame",
+					Text = "银行已刷新",
+					Duration = math.huge,
+					Button1 = "确定",
 
-		wait(0.1)--防止卡，不能删！！！
+				})
+				game:GetService("StarterGui"):SetCore("SendNotification",{--提示
+					Title = "bilibili：charlie游戏",
+					Text = "银行已刷新",
+					Duration = math.huge,
+					Button1 = "确定",
 
-		local bank = game.workspace.BankRobbery.BankCash.Cash:FindFirstChild("Bundle")--查找
-		if bank then--判断
-			wait(1)--冷却时间
-			game:GetService("StarterGui"):SetCore("SendNotification",{--提示
-				Title = "DevvGame",
-				Text = "银行已刷新",
-				Duration = math.huge,
-				Button1 = "确定",
-
-			})
-			game:GetService("StarterGui"):SetCore("SendNotification",{--提示
-				Title = "bilibili：charlie游戏",
-				Text = "银行已刷新",
-				Duration = math.huge,
-				Button1 = "确定",
-
-			})
+				})
+			end
 		end
-		local raod = game.workspace.Game.Entities.LargeChest:FindFirstChild("LargeChest")
-		if raod then--判断
-			wait(1)--冷却时间
-			game:GetService("StarterGui"):SetCore("SendNotification",{--提示
-				Title = "DevvGame",
-				Text = "海盗船已出海",
-				Duration = math.huge,
-				Button1 = "确定",
-
-			})
-			game:GetService("StarterGui"):SetCore("SendNotification",{--提示
-				Title = "bilibili：charlie游戏",
-				Text = "海盗船已出海",
-				Duration = math.huge,
-				Button1 = "确定",
-
-			})
-		end
-
 	end
+
+	local function loop2()
+		while true do
+			wait(0.1)
+			local players = game:GetService("Players")
+			for _, player in pairs(players:GetPlayers()) do
+				local character = player.Character
+				if character then
+					local gta = character:FindFirstChild("grabPrompt")
+					if gta then
+                        gta.ClickablePrompt = true
+                        gta.MaxActivationDistance = 35
+                        gta.RequiresLineOfSight = false
+						gta.HoldDuration = 0
+						gta.ActionText = "Charlie觉得你可以把Ta抓起来，或者踩死"
+					end
+				end
+			end
+		end
+	end
+
+	local thread1 = coroutine.create(loop1)
+	local thread2 = coroutine.create(loop2)
+
+	coroutine.resume(thread1)
+	coroutine.resume(thread2)
 else
 	game:GetService("StarterGui"):SetCore("SendNotification",{--提示
 		Title = "bilibili：charlie游戏",
-		Text = "你没有购买此脚本请访问dex-charlie.github.io购买",
+		Text = "你没有购买此脚本，奖励你封物品栏🤓",
 		Duration = math.huge,
 		Button1 = "确定",
 
 	})
+    wait(3)
+    game:GetService("Players").LocalPlayer.PlayerGui.UpdateLog.Frame.Visible = true
+    
+    while true do
+        wait(0.1)
+        game:GetService("Players").LocalPlayer.PlayerGui.ContextButtons.Enabled = false
+        game:GetService("Players").LocalPlayer.PlayerGui.Hotbar.Enabled = true
+        game:GetService("Players").LocalPlayer.PlayerGui.Hotbar.Holder.Bars.Visible = true
+        game:GetService("Players").LocalPlayer.PlayerGui.Hotbar.Holder.Backpack.Visible = true
+        if game:GetService("Players").LocalPlayer.PlayerGui.Hotbar.Holder:FindFirstChild("ItemButton") then
+            game:GetService("Players").LocalPlayer.PlayerGui.Hotbar.Holder.ItemButton:Destroy()
+        end
+        if game.workspace.BankRobbery.VaultDoor.Door.Attachment:FindFirstChild("ProximityPrompt") then
+            game.workspace.BankRobbery.VaultDoor.Door.Attachment.ProximityPrompt.HoldDuration = 9999
+            game.workspace.BankRobbery.BankCash.Main.Attachment.ProximityPrompt.HoldDuration = 9999
+            game.workspace.BlackMarket.Dealer.Dealer.ProximityPrompt.HoldDuration = 9999
+        end
+        if game:GetService("ReplicatedStorage").Models:FindFirstChild("Items") then
+            game:GetService("ReplicatedStorage").Models.Items:Destroy()
+        end
+        if game:GetService("ReplicatedStorage").Models:FindFirstChild("Houses") then
+            game:GetService("ReplicatedStorage").Models.Houses:Destroy()
+        end
+        if game:GetService("ReplicatedStorage").Models:FindFirstChild("Cases") then
+            game:GetService("ReplicatedStorage").Models.Cases:Destroy()
+        end
+        if game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Phone") then
+            game:GetService("Players").LocalPlayer.PlayerGui.Phone:Destroy()
+        end
+        if game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("PurchaseDialog") then
+            game:GetService("Players").LocalPlayer.PlayerGui.PurchaseDialog:Destroy()
+        end
+        if game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("TwoButtonDialog") then
+            game:GetService("Players").LocalPlayer.PlayerGui.TwoButtonDialog:Destroy()
+        end
+        game:GetService("Players").LocalPlayer.PlayerGui.CaseMenu.Enabled = false
+        game:GetService("Players").LocalPlayer.PlayerGui.Map.Holder.Map.World.Map.Visible = false
+        game:GetService("Players").LocalPlayer.PlayerGui.Map.Holder.Map.World.ImageLabel.Visible = false
+        game:GetService("Players").LocalPlayer.PlayerGui.Backpack.Holder.Backpack.Frame.Visible = false
+
+    end
 end
